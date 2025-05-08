@@ -1,92 +1,41 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 40 33% 97%;
+    --foreground: 36 12% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 36 12% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 36 12% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 36 31% 47%;
+    --primary-foreground: 40 33% 97%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 142 19% 45%;
+    --secondary-foreground: 40 33% 97%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 36 5% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 36 31% 92%;
+    --accent-foreground: 36 12% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 40 33% 97%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 36 31% 87%;
+    --input: 36 31% 87%;
+    --ring: 36 31% 47%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -96,6 +45,53 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+.hero-pattern {
+  background-color: #f3f1e9;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657l1.415 1.414L13.857 0H11.03zm32.284 0l6.364 6.364-1.414 1.414L41.2 0h2.112zm-24.596 0l-6.364 6.364 1.414 1.414L19.8 0h-1.082zM38.213 0l9.9 9.9-1.415 1.413L38.213 2.828 29.9 11.14l-1.414-1.414L38.213 0zM20.787 0L10.886 9.9l1.415 1.413 9.9-9.9 9.9 9.9 1.414-1.414L20.787 0zM0 9.157l1.414 1.414 8.486-8.486L8.486 0 0 8.485v.672zm60 .673L51.515 0 50.1 1.414l8.486 8.485L60 9.83v-.674zm0 3.75L56.243 9.9l-1.414 1.414L60 15.757V13.58zm0 3.75L53 13.243l-1.414 1.414L60 22.5v-5.17zm0 3.75L49.758 16.9l-1.415 1.414 12.243 11.313v-5.17zm0 3.75L46.515 20l-1.414 1.414L60 35v-5.17zM0 22.5l5.657 5.657 1.414-1.415L0 20v2.5zm0 5.17l8.9 8.9 1.415-1.415L0 25.827v1.843zm0 5.166l12.142 12.142 1.414-1.414L0 33.49v-.654zm0 5.17l15.385 15.384 1.414-1.414L0 38.658v-.654zm0 5.168l18.627 18.627 1.414-1.414L0 43.826v.654zm60-5.822L41.373 60h2.827l15.8-15.8v-.654zM39.9 60l19.514-19.514 1.414-1.414-1.414-1.414-20.3 20.3.786 2.042zM35.785 60l23.557-23.557-1.414-1.414L34.457 60h1.328zm-5.657 0l28.385-28.385-1.414-1.414-30.2 30.2L26.8 60h3.328zm-5.656 0l33.214-33.214-1.414-1.414-34.9 34.9L20.9 60h3.57zm-5.657 0l38.043-38.043-1.414-1.414-40.356 40.356L14.9 60h3.57zM12.807 54.9L58.9 8.807l-1.415-1.415-46.9 46.9 2.222.608zm-2.36-3.04l45.3-45.3L54.333 5.147l-45.3 45.3 1.414 1.414zM5.04 47.04L50.337 1.74 48.923.327 3.626 45.626l1.415 1.414zM2.093 40.093L47.39 0H40.67L0 40.092l2.093 0zM.486 34.486l35.443-35.93-1.414-1.414-36.864 36.864 2.835.48z' fill='%238f7e62' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.btn-hover-effect {
+  @apply transition-all duration-300 ease-in-out transform hover:scale-105;
+}
+
+.product-card {
+  @apply border border-tea-medium/20 rounded-md overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-300;
+}
+
+.nav-link {
+  @apply relative font-medium text-foreground hover:text-primary transition duration-150;
+}
+
+.nav-link::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-200;
+}
+
+.nav-link:hover::after {
+  @apply w-full;
+}
+
+.cart-bubble {
+  @apply absolute -top-2 -right-2 w-5 h-5 flex items-center justify-center bg-secondary text-white text-xs rounded-full;
+}
+
+.section-heading {
+  @apply font-serif text-3xl md:text-4xl font-medium text-tea-dark relative pb-3 mb-8 inline-block;
+}
+
+.section-heading::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-2/3 h-0.5 bg-tea-medium;
+}
+
+.input-style {
+  @apply border border-tea-medium/30 rounded px-4 py-2 focus:outline-none focus:border-tea-medium focus:ring-1 focus:ring-tea-medium;
 }
