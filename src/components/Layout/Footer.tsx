@@ -37,9 +37,9 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-serif mb-4">Liên hệ</h3>
             <ul className="space-y-2 text-sm text-tea-light">
-              <li>Email: info@heratea.com</li>
-              <li>Điện thoại: 0123.456.789</li>
-              <li>Địa chỉ: 123 Đường Trà Xanh, Quận 1, TP. HCM</li>
+              <li>Email: minhnguyentuan31103@gmail.com</li>
+              <li>Điện thoại: 0968945406</li>
+              <li>Địa chỉ: Kim Giang, Thanh Xuân, Hà Nội</li>
             </ul>
             <div className="flex space-x-4 mt-4">
               <a href="#" className="hover:text-tea-gold transition-colors">
