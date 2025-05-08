@@ -8,7 +8,7 @@ export const products: Product[] = [
     price: 320000,
     description: "Trà thảo mộc cao cấp với vị thơm ngon đặc trưng",
     detailDescription: "Thanh sắc mộc trà là sự kết hợp tinh tế của các loại thảo mộc quý, mang đến hương vị thanh nhã và tinh khiết. Mỗi ngụm trà đều là một trải nghiệm thư thái, giúp tâm hồn trở nên nhẹ nhàng và thư giãn sau một ngày dài mệt mỏi.",
-    image: "https://images.unsplash.com/photo-1578586524259-489a01134140?q=80&w=1600&auto=format&fit=crop",
+    image: "/lovable-uploads/ecac73d7-b9ca-4c87-b5b0-68fca0e62302.png",
     category: "Trà thảo mộc",
     weight: "100g",
     stock: 25,
