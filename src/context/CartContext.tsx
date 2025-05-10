@@ -1,6 +1,6 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
 import { CartItem, Product } from '@/types';
 
 interface CartContextType {
@@ -49,16 +49,17 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       if (existingItemIndex !== -1) {
         const updatedCart = [...prevCart];
         updatedCart[existingItemIndex].quantity += quantity;
-        toast({
-          title: "Giỏ hàng đã được cập nhật",
-          description: `${product.name} x${updatedCart[existingItemIndex].quantity}`,
+        
+        toast.success(`Đã cập nhật giỏ hàng: ${product.name} x${updatedCart[existingItemIndex].quantity}`, {
+          duration: 5000, // Thông báo hiển thị trong 5 giây
         });
+        
         return updatedCart;
       } else {
-        toast({
-          title: "Đã thêm vào giỏ hàng",
-          description: `${product.name} x${quantity}`,
+        toast.success(`Đã thêm vào giỏ hàng: ${product.name} x${quantity}`, {
+          duration: 5000, // Thông báo hiển thị trong 5 giây
         });
+        
         return [...prevCart, { product, quantity }];
       }
     });
@@ -75,9 +76,8 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return newCart;
     });
 
-    toast({
-      title: "Sản phẩm đã được xóa khỏi giỏ hàng",
-      variant: "destructive",
+    toast.error("Đã xóa sản phẩm khỏi giỏ hàng", {
+      duration: 5000, // Thông báo hiển thị trong 5 giây
     });
   };
 
