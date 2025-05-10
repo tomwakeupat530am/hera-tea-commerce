@@ -51,13 +51,13 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
         updatedCart[existingItemIndex].quantity += quantity;
         
         toast.success(`Đã cập nhật giỏ hàng: ${product.name} x${updatedCart[existingItemIndex].quantity}`, {
-          duration: 5000, // Thông báo hiển thị trong 5 giây
+          duration: 1500, // Thông báo hiển thị trong 1.5 giây
         });
         
         return updatedCart;
       } else {
         toast.success(`Đã thêm vào giỏ hàng: ${product.name} x${quantity}`, {
-          duration: 5000, // Thông báo hiển thị trong 5 giây
+          duration: 1500, // Thông báo hiển thị trong 1.5 giây
         });
         
         return [...prevCart, { product, quantity }];
@@ -77,7 +77,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
 
     toast.error("Đã xóa sản phẩm khỏi giỏ hàng", {
-      duration: 5000, // Thông báo hiển thị trong 5 giây
+      duration: 1500, // Thông báo hiển thị trong 1.5 giây
     });
   };
 
