@@ -4,9 +4,9 @@ import ProductCard from './ProductCard';
 
 const ProductGrid = ({ products, title }) => {
   return (
-    <section className="py-12">
+    <section className="py-6">
       {title && (
-        <h2 className="section-heading text-center mx-auto">{title}</h2>
+        <h2 className="section-heading text-center mx-auto mb-6">{title}</h2>
       )}
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
