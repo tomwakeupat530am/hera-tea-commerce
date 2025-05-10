@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -37,36 +37,34 @@ const App = () => (
         <TooltipProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/products" element={<ProductsPage />} />
-              <Route path="/product/:id" element={<ProductDetailPage />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
-              <Route path="/order-success" element={<OrderSuccessPage />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              
-              {/* Account Routes */}
-              <Route path="/account" element={<AccountPage />} />
-              <Route path="/account/orders" element={<OrdersPage />} />
-              <Route path="/account/points" element={<PointsPage />} />
-              <Route path="/account/settings" element={<SettingsPage />} />
-              
-              {/* Information Pages */}
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="/affiliate" element={<AffiliatePage />} />
-              
-              {/* Policy Pages */}
-              <Route path="/policy/returns" element={<ReturnsPage />} />
-              <Route path="/policy/shipping" element={<ShippingPage />} />
-              <Route path="/policy/privacy" element={<PrivacyPage />} />
-              <Route path="/policy/terms" element={<TermsPage />} />
-              
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<ProductsPage />} />
+            <Route path="/product/:id" element={<ProductDetailPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
+            <Route path="/order-success" element={<OrderSuccessPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            
+            {/* Account Routes */}
+            <Route path="/account" element={<AccountPage />} />
+            <Route path="/account/orders" element={<OrdersPage />} />
+            <Route path="/account/points" element={<PointsPage />} />
+            <Route path="/account/settings" element={<SettingsPage />} />
+            
+            {/* Information Pages */}
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="/affiliate" element={<AffiliatePage />} />
+            
+            {/* Policy Pages */}
+            <Route path="/policy/returns" element={<ReturnsPage />} />
+            <Route path="/policy/shipping" element={<ShippingPage />} />
+            <Route path="/policy/privacy" element={<PrivacyPage />} />
+            <Route path="/policy/terms" element={<TermsPage />} />
+            
+            <Route path="*" element={<NotFound />} />
+          </Routes>
         </TooltipProvider>
       </CartProvider>
     </AuthProvider>
