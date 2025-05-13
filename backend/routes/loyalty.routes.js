@@ -5,7 +5,7 @@ const {
   getUserPoints,
   getLoyaltyHistory,
   redeemPoints,
-  addLoyaltyPoints
+  addLoyaltyPoints,
 } = require('../controllers/loyalty.controller');
 const { protect } = require('../middlewares/auth.middleware');
 const { isAdmin } = require('../middlewares/role.middleware');

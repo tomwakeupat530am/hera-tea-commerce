@@ -1,36 +1,65 @@
 
 const validator = {
-  // Validate email
+  /**
+   * Validate email format
+   * @param {String} email - Email to validate
+   * @returns {Boolean} - Is valid or not
+   */
   isValidEmail: (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     return emailRegex.test(email);
   },
-  
-  // Validate phone number
+
+  /**
+   * Validate phone number format (Vietnamese)
+   * @param {String} phone - Phone number to validate
+   * @returns {Boolean} - Is valid or not
+   */
   isValidPhone: (phone) => {
-    const phoneRegex = /^\+?[0-9]{10,15}$/;
+    const phoneRegex = /(84|0[3|5|7|8|9])+([0-9]{8})\b/;
     return phoneRegex.test(phone);
   },
-  
-  // Validate password
-  isValidPassword: (password) => {
-    // Must be at least 6 characters
+
+  /**
+   * Validate password strength
+   * @param {String} password - Password to validate
+   * @returns {Boolean} - Is valid or not
+   */
+  isStrongPassword: (password) => {
     return password && password.length >= 6;
   },
-  
-  // Validate Vietnamese name
-  isValidVietnameseName: (name) => {
-    // Check if name contains at least one letter
-    // and allows for Vietnamese characters, spaces, and hyphens
-    const nameRegex = /^[a-zA-ZÀ-ỹ\s\-]+$/;
-    return nameRegex.test(name) && name.length >= 2;
+
+  /**
+   * Validate if input is empty
+   * @param {String} value - Value to check
+   * @returns {Boolean} - Is empty or not
+   */
+  isEmpty: (value) => {
+    return value === undefined || value === null || value.trim() === '';
   },
-  
-  // Validate referral code
-  isValidReferralCode: (code) => {
-    // Referral code format: 2-4 letters followed by 4 alphanumeric characters
-    const referralRegex = /^[A-Z]{2,4}[A-Z0-9]{4}$/;
-    return referralRegex.test(code);
+
+  /**
+   * Validate if input is a number
+   * @param {any} value - Value to check
+   * @returns {Boolean} - Is number or not
+   */
+  isNumber: (value) => {
+    return !isNaN(parseFloat(value)) && isFinite(value);
+  },
+
+  /**
+   * Sanitize input to prevent XSS
+   * @param {String} input - Input to sanitize
+   * @returns {String} - Sanitized input
+   */
+  sanitizeInput: (input) => {
+    if (typeof input !== 'string') return input;
+    return input
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#x27;')
+      .replace(/\//g, '&#x2F;');
   }
 };
 

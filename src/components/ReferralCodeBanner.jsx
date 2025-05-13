@@ -3,9 +3,37 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/context/AuthContext';
+import { Copy, Share2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const ReferralCodeBanner = () => {
   const { user, isAuthenticated } = useAuth();
+  const { toast } = useToast();
+
+  const handleCopyCode = () => {
+    if (user?.referralCode) {
+      navigator.clipboard.writeText(user.referralCode);
+      toast({
+        title: "Đã sao chép",
+        description: "Mã giới thiệu đã được sao chép vào clipboard"
+      });
+    }
+  };
+
+  const handleShareCode = () => {
+    if (navigator.share && user?.referralCode) {
+      navigator.share({
+        title: 'Hera Tea - Mã giới thiệu',
+        text: `Dùng mã ${user.referralCode} để nhận ưu đãi khi mua trà tại Hera Tea!`,
+        url: window.location.origin,
+      });
+    } else {
+      toast({
+        title: "Chia sẻ",
+        description: "Hãy sao chép mã và chia sẻ với bạn bè của bạn!"
+      });
+    }
+  };
 
   if (!isAuthenticated) {
     return (
@@ -43,21 +71,22 @@ const ReferralCodeBanner = () => {
       <div className="bg-white p-3 rounded-md border border-tea-medium/20 flex justify-between items-center mb-4">
         <span className="font-medium">{user.referralCode}</span>
         <button 
-          className="text-primary text-sm hover:underline"
-          onClick={() => {
-            navigator.clipboard.writeText(user.referralCode);
-            alert('Đã sao chép mã giới thiệu!');
-          }}
+          className="text-primary hover:text-primary/80"
+          onClick={handleCopyCode}
         >
-          Sao chép
+          <Copy className="h-4 w-4" />
         </button>
       </div>
       <p className="text-tea-medium text-sm">
         Chia sẻ mã này với bạn bè và nhận 35% hoa hồng khi họ mua hàng.
       </p>
-      <div className="mt-4 text-right">
-        <Button asChild variant="outline" size="sm">
-          <Link to="/affiliate">Xem thống kê</Link>
+      <div className="mt-4 flex justify-end">
+        <Button variant="outline" size="sm" className="flex items-center" onClick={handleShareCode}>
+          <Share2 className="h-4 w-4 mr-2" />
+          Chia sẻ mã
+        </Button>
+        <Button asChild variant="outline" size="sm" className="ml-2">
+          <Link to="/account/affiliate">Xem thống kê</Link>
         </Button>
       </div>
     </div>

@@ -14,8 +14,8 @@ const loyaltySchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      required: true,
       enum: ['earned', 'redeemed'],
+      required: true,
     },
     description: {
       type: String,
@@ -24,6 +24,10 @@ const loyaltySchema = new mongoose.Schema(
     order: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Order',
+    },
+    referrer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
     },
   },
   {
