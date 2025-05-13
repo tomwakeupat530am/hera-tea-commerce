@@ -9,6 +9,7 @@ interface AuthContextType {
   logout: () => void;
   register: (name: string, email: string, password: string, referralCode?: string, wantsToBeAffiliate?: boolean) => Promise<boolean>;
   isAuthenticated: boolean;
+  updateUserProfile: (data: { name?: string; phone?: string }) => Promise<boolean>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -148,6 +149,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
   };
 
+  const updateUserProfile = async (data: { name?: string; phone?: string }): Promise<boolean> => {
+    // Ensure we have a user to update
+    if (!user) {
+      return Promise.resolve(false);
+    }
+
+    // Simulate API call
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const updatedUser = {
+          ...user,
+          name: data.name || user.name,
+          phone: data.phone || user.phone
+        };
+        
+        setUser(updatedUser);
+        localStorage.setItem('heratea-user', JSON.stringify(updatedUser));
+        resolve(true);
+      }, 500);
+    });
+  };
+
   return (
     <AuthContext.Provider value={{ 
       user, 
@@ -155,7 +178,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       login, 
       logout, 
       register, 
-      isAuthenticated: !!user 
+      isAuthenticated: !!user,
+      updateUserProfile 
     }}>
       {children}
     </AuthContext.Provider>

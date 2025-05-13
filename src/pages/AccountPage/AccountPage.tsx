@@ -5,9 +5,10 @@ import { Button } from '@/components/ui/button';
 import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { formatPrice } from '@/utils/format';
+import AccountMenu from '@/components/Account/AccountMenu';
 
 const AccountPage = () => {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
@@ -22,61 +23,12 @@ const AccountPage = () => {
       </div>
 
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Sidebar */}
-          <div>
-            <div className="bg-white p-6 rounded-lg border border-tea-medium/20 shadow-sm">
-              <h2 className="text-xl font-serif mb-6">Tài khoản</h2>
-              
-              <nav className="space-y-2">
-                <Link
-                  to="/account"
-                  className="block p-3 rounded-md bg-accent text-tea-dark font-medium"
-                >
-                  Tổng quan
-                </Link>
-                <Link
-                  to="/account/orders"
-                  className="block p-3 rounded-md hover:bg-accent transition-colors"
-                >
-                  Đơn hàng của tôi
-                </Link>
-                <Link
-                  to="/account/points"
-                  className="block p-3 rounded-md hover:bg-accent transition-colors"
-                >
-                  Điểm thưởng
-                </Link>
-                {user?.isAffiliate && (
-                  <Link
-                    to="/account/affiliate"
-                    className="block p-3 rounded-md hover:bg-accent transition-colors"
-                  >
-                    Quản lý Affiliate
-                  </Link>
-                )}
-                <Link
-                  to="/account/settings"
-                  className="block p-3 rounded-md hover:bg-accent transition-colors"
-                >
-                  Cài đặt tài khoản
-                </Link>
-              </nav>
-              
-              <div className="mt-6 pt-6 border-t border-gray-200">
-                <Button
-                  onClick={logout}
-                  variant="outline"
-                  className="w-full"
-                >
-                  Đăng xuất
-                </Button>
-              </div>
-            </div>
-          </div>
+          <AccountMenu activePath="/account" />
 
           {/* Main Content */}
-          <div className="lg:col-span-2 space-y-8">
+          <div className="lg:col-span-3 space-y-8">
             <div className="bg-white p-6 rounded-lg border border-tea-medium/20 shadow-sm">
               <h2 className="text-xl font-serif mb-6">Thông tin tài khoản</h2>
               
@@ -108,7 +60,10 @@ const AccountPage = () => {
                       className="ml-3"
                       onClick={() => {
                         navigator.clipboard.writeText(user?.referralCode || '');
-                        alert('Đã sao chép mã giới thiệu!');
+                        toast({
+                          title: "Đã sao chép",
+                          description: "Mã giới thiệu đã được sao chép vào clipboard"
+                        });
                       }}
                     >
                       Sao chép
