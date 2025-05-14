@@ -80,7 +80,7 @@ const reducer = (state: State, action: Action): State => {
         toastTimeouts.set(
           toastId,
           setTimeout(() => {
-            // dispatch({ type: "REMOVE_TOAST", toastId })
+            dispatch({ type: actionTypes.REMOVE_TOAST, toastId })
           }, TOAST_REMOVE_DELAY)
         )
       }
@@ -145,9 +145,13 @@ toast.dismiss = (id?: string) => {
   })
 }
 
-const useToast = () => {
-  const { toast: hookToast } = useToastPrimitive()
-  return { toast: hookToast }
+// Fix the infinite recursion by changing how we export useToast
+function useToast() {
+  return {
+    toast,
+    toasts: memoryState.toasts,
+    dismiss: toast.dismiss,
+  }
 }
 
 export { useToast, toast }

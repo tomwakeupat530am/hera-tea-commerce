@@ -1,59 +1,12 @@
 
-export type Product = {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  detailDescription?: string;
-  image: string;
-  category: string;
-  weight: string;
-  stock: number;
-  ingredients?: string;
-};
-
-export type CartItem = {
-  product: Product;
-  quantity: number;
-};
-
-export type User = {
+// Define or extend the User type if it doesn't exist yet
+export interface User {
   id: string;
   name: string;
   email: string;
-  isAffiliate: boolean;
-  referralCode: string;
-  points: number;
-  pointsHistory: PointsHistory[];
-  orders: Order[];
-  affiliateCommission?: number;
-};
-
-export type PointsHistory = {
-  id: string;
-  points: number;
-  type: 'earned' | 'redeemed';
-  description: string;
-  date: string;
-};
-
-export type Order = {
-  id: string;
-  items: CartItem[];
-  total: number;
-  status: 'pending' | 'processing' | 'shipped' | 'delivered' | 'cancelled';
-  date: string;
-  shippingAddress: Address;
-  trackingNumber?: string;
+  isAffiliate?: boolean;
   referralCode?: string;
-  affiliateCode?: string;
-};
-
-export type Address = {
-  fullName: string;
-  phoneNumber: string;
-  street: string;
-  city: string;
-  province: string;
-  postalCode: string;
-};
+  points?: number;
+  affiliateCommission?: number;
+  phone?: string; // Added the missing phone property
+}

@@ -6,9 +6,11 @@ import { Link, Navigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
 import { formatPrice } from '@/utils/format';
 import AccountMenu from '@/components/Account/AccountMenu';
+import { useToast } from '@/hooks/use-toast';
 
 const AccountPage = () => {
   const { user, isAuthenticated } = useAuth();
+  const { toast } = useToast();
 
   if (!isAuthenticated) {
     return <Navigate to="/login" />;
